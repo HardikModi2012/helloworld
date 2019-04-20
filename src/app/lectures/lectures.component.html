@@ -1,0 +1,10 @@
+<h2>My lectures</h2>
+<ul class="Lectures">
+    <li *ngFor="let lecture of lectures"
+    [class.selected]="lecture === SelectedLecture"
+     (click)="onSelect(lecture)">
+      <span class="badge">{{lecture.name}}</span>
+  </li>
+</ul>
+
+<app-lecture-detail [lecture]="selectedLecture"></app-lecture-detail>

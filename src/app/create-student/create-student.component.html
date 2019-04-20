@@ -1,0 +1,54 @@
+<form #studentForm="ngForm" ngNativeValidate (ngSubmit)="saveStudent(studentForm.value)">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Create Student</h3>
+    </div>
+    <div class="panel-body">
+
+      <div class="form-group" [class.has-error]="studentForm.controls.name.invalid  && studentForm.controls.name.touched">
+        <label for="name" class="control-label">Full Name</label>
+        <input required id="name" name="name" [(ngModel)]="name" type="text" class="form-control">
+         
+        <span class="help-block" *ngIf="studentForm.controls.name.invalid && studentForm.controls.name.touched">
+          name required
+        </span>
+      </div>
+
+      <div>touched: {{studentForm.controls.name.touched }}</div>
+      <div>untouched: {{studentForm.controls.name.untouched}}</div>
+
+     
+<!-- 
+      <div class="form-group" [class.has-error]="contactPreference.touched  && contactPreference.invalid">
+        <label class="control-label">Contact preference</label>
+        <div class="form-control">
+          <label class="radio-inline">
+            <input type="radio" required #contactPreference="ngModel" name="contactPreference" value="email"
+              [(ngModel)]="student.contactPreference">
+            email
+          </label>
+          <label class="radio-inline">
+            <input type="radio" required #contactPreference="ngModel" name="contactPreference" value="phone"
+              [(ngModel)]="student.contactPreference">
+            phone
+          </label>
+        </div>
+        <span class="help-block" *ngIf="contactPreference.touched && contactPreference.invalid">
+          contactPreference required
+        </span>
+        Selected value : {{contactPreference.value}}
+      </div> -->
+
+    </div>
+    <div class="panel-footer">
+      <button type="submit" class="btn btn-primary" [disabled]="studentForm.invalid">save</button>
+      <button type="button" class="btn btn-default" (click)="cancel(studentForm)">cancel</button>
+    </div>
+  </div>
+</form>
+
+
+angular generated form Model : {{studentForm.value | json }}
+<br />
+<br />
+our student model: {{ student | json}}

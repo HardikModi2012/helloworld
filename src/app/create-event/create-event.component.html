@@ -1,0 +1,57 @@
+<div class="container">
+    <form #eventForm="ngForm" (ngSubmit)="saveEvent(eventForm.value)">
+      <div class="form-group"  [ngClass]="{'error': eventForm.controls.txtName?.invalid && eventForm.controls.txtName?.touched}">
+        <label for="name">Event Name: </label>
+        <input id="name" required (ngModel)="name" name="txtName" type="text"/>
+        <span *ngIf="eventForm.controls.txtName?.invalid && eventForm.controls.txtName?.touched">Required</span>
+     
+       <div>touched: {{ eventForm.controls.txtName?.touched }}</div>
+      <div>untoched: {{ eventForm.controls.txtName?.untouched }} </div>
+      <div>pristine: {{ eventForm.controls.txtName?.pristine }}</div> 
+  
+    </div>
+
+      <div class="form-group" [class.has-error]="eventForm.controls.date?.invalid && eventForm.controls.date?.touched">
+        <label for="date">Date: </label>
+        <input id="date" required (ngModel)="date" name="date" type="text"/>
+        <span *ngIf="eventForm.controls.date?.invalid && eventForm.controls.date?.touched">Required</span>
+      </div>
+
+      <div class="form-group" [class.has-error]="eventForm.controls.time?.invalid 
+      && eventForm.controls.time?.touched">
+        <label for="time">Time: </label>
+        <input id="time" required (ngModel)="time" name="time" type="text"/>
+        <span *ngIf="eventForm.controls.time?.invalid && eventForm.controls.time?.touched">Required</span>
+      </div>
+
+         <div class="form-group"  [class.has-error]="eventForm.controls.address?.invalid 
+           && eventForm.controls.address?.touched">
+        <label for="address" >Address: </label>
+        <input id="address" required (ngModel)="address" name="address" type="text"/>
+        <span *ngIf="eventForm.controls.address?.invalid && eventForm.controls.address?.touched">Required</span>
+        <span *ngIf="eventForm.controls.address?.invalid && eventForm.controls.address.errors?.restrictedWords">restricted Words found
+          :{{eventForm.controls.address?.errors.restrictedWords}}
+        </span>
+      </div>
+
+     <div class="form-group"  [class.has-error]="eventForm.controls.city?.invalid 
+      && eventForm.controls.city?.touched">
+        <label for="city">City: </label>
+        <input id="city" required name="city" (ngModel)="city"  type="text"/>
+        <span *ngIf="eventForm.controls.city?.invalid && eventForm.controls.city?.touched">Required</span>
+      </div>
+
+       <div class="form-group" [class.has-error]="eventForm.controls.country?.invalid 
+      && eventForm.controls.country?.touched">
+        <label for="country">Country: </label>
+        <input id="country" required (ngModel)="country" name="country" type="text"/>
+        <span *ngIf="eventForm.controls.country?.invalid && eventForm.controls.country?.touched">Required</span>
+      </div>
+  
+ 
+
+      <button type="submit" class="btn btn-primary" [disabled]="eventForm.invalid">Save</button>
+      <button type="button" class="btn btn-default" (click)="cancel(eventForm)">Cancel</button>
+    </form>
+
+  </div>
