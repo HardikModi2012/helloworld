@@ -1,3 +1,5 @@
+import { EventListResolver } from './event-list.resolver.service';
+import { StarComponent } from './shared/star.component';
 import { appRoutes } from './app-routing.module';
 import { StudentService } from './create-student/student.service';
 import { SelectRequiredValidatorDirective } from './shared/select-required-validator.directive';
@@ -8,7 +10,7 @@ import { CoursesListComponent } from './../courseslist.component';
 import { CoursesFooterComponent } from './coursesfooter.component';
 import { CoursesMenuComponent } from './coursesmenu.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +29,11 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { EventService } from './event.service';
 import { RouterModule, Routes } from '@angular/router';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { EventListComponent } from './event-list/event-list.component';
+import { EventRouteActivator } from './event-details/event.route.activator';
+import { Error404Component } from './create-student/errors/404.component';
+import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.component';
+import { VisitsComponent } from './visits/visits.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +56,12 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     DisplayStudentComponent,
     LoginComponent,
     CreateEventComponent,
-    EventDetailsComponent    
+    EventDetailsComponent,
+    Error404Component,
+   EventListComponent,
+   EventThumbnailComponent,
+      StarComponent,
+      VisitsComponent  
     
     
   ],
@@ -63,8 +75,20 @@ import { EventDetailsComponent } from './event-details/event-details.component';
   ],
   providers: [
     StudentService,
-    EventService
+    EventService,
+    EventListResolver,
+    EventRouteActivator,
+     { 
+       provide: 'canDeactivateCreateEvent' ,
+        useValue: checkDirtyState } //function
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function checkDirtyState(Component:CreateEventComponent)
+{
+  if(Component.isDirty)
+  return window.confirm('you have not saved this event?')
+  return true
+}

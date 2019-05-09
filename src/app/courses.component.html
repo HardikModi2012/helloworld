@@ -1,28 +1,10 @@
-<h2>my Courses</h2>
-
-<ul class="courses">
-  <li *ngFor="let course of courses; let i = index" >
-      <a routerLink ="/detail/{{course.id}}">
-     <span class="badge">{{course.id}}</span>{{course.name}}
-  </a>
+<h2>My course</h2>
+<ul class="course">
+    <li *ngFor="let course of courses"
+    [class.selected]="course === SelectedCourse"
+     (click)="onSelect(course)">
+      <span class="badge">{{course.name}}</span>
   </li>
-  <li *ngFor="let lecture of lectures; let i = index" >
-    <a routerLink ="/detail/{{course.id}}">
-   <span class="badge">{{course.id}}</span>{{course.name}}
-</a>
-</li>
 </ul>
 
-<app-course-detail [course]="selectedCourse"></app-course-detail>
-
-<div *ngIf="SelectedCourse">
-
-<h2>{{SelectedCourse.name | uppercase}} Details</h2>
-<div><span>id:</span> {{SelectedCourse.id}}</div>
-<div>
-        <label>name:
-          <input [(ngModel)]="SelectedCourse.name" placeholder="name"/>
-        </label>
-      </div>
-
-</div>
+<app-lecture-detail [lecture]="SelectedCourse"></app-lecture-detail>

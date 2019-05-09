@@ -25,8 +25,9 @@ export class LecturesComponent implements OnInit {
 //observables are also called subscribe
 
   getLectures(): void{
-    this.lectureService.getLectures()
-    .subscribe(lectures => this.lectures = lectures.slice(1, 5)) ;
+    this.lectureService.getLectures().subscribe(
+      lectures => this.lectures = lectures ) ;
+      //specifi the action to take when an observale emits the item
   }
   //lectures are callback function to the parameter
    

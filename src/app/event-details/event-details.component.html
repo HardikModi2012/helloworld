@@ -20,5 +20,27 @@
         {{event?.location?.city}}, {{event?.location?.country}}
       </address>
     </div>
+
+    <hr>
+
+    <div  class="row">
+      <div class="col-md-2">
+        <h3 style="margin:0">Sessions</h3>
+      </div>
+      <div class="col-md-7">
+        <button class="btn btn-default" [class.active]="filterBy==='all'"  (click)
+        ="filterBy==='all'">All</button>
+        <button class="btn btn-default" [class.active]="filterBy==='beginner'"  (click)
+        ="filterBy==='beginner'">beginner</button>
+        <button class="btn btn-default" [class.active]="filterBy==='intermediate'"  (click)
+        ="filterBy==='intermediate'">intermediate</button>
+        <button class="btn btn-default" [class.active]="filterBy==='Advanced'"  (click)
+        ="filterBy==='Advanced'">Advanced</button>
+      </div>
+      <div class="col-md-2">
+        <a (click)="addSession()">Add session</a>
+      </div>
+    </div>
+    <!-- <session-list [sessions]="event?.sessions"></session-list> -->
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { EventService } from './../event.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl,  Validator, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create-event',
@@ -12,8 +12,8 @@ export class CreateEventComponent implements OnInit {
   
   languages = ['ENglish' , 'Hindi' , 'Gujarati' ];
  
-
-
+  isDirty:boolean = true
+  
   constructor(private eventService:EventService, private router:Router ) { 
     //called first time before the ngOnInit()
   }
@@ -34,7 +34,7 @@ export class CreateEventComponent implements OnInit {
     this.router.navigate(['/events'])
   }
   
-  cancel(form) {
-    this.router.navigate(['/events'])
+  cancel() {
+    this.router.navigate(['/dashboard'])
   }
 }

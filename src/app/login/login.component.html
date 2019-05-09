@@ -4,14 +4,14 @@
   <form  #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
     <div class="form-group" >
       <label for="userName">User Name:</label>
-      <em *ngIf="loginForm.controls.userName.invalid && (loginForm.controls.userName.touched || mouseoverLogin)">Required</em>
+      <em *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName.touched || mouseoverLogin)">Required</em>
       <input id="username" (ngModel)="userName" name="username" name="loginForm.controls.userName" Required type="text" class="form-control"
        placeholder="user name.."/>
-<span *ngIf="loginForm.controls.name.invalid && loginForm.controls.name.touched">Required</span>
+<span *ngIf="loginForm.controls.name?.invalid && loginForm.controls.name?.touched">Required</span>
     </div>
     <div class="form-group">
       <label for="password">password:</label>
-      <em *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.touched || mouseoverLogin)">Required</em>
+      <em *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
       <input id="passWord" (ngModel)="password" name="password" Required type="text" class="form-control"
       placeholder="password.."/>
       

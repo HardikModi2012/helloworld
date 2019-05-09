@@ -42,6 +42,10 @@ export class CreateStudentComponent implements OnInit {
 
   saveStudent(): void {
     this._studentservice.save(this.student);
-    this._router.navigate(['list']);
+    this._router.navigate(['dashboard']);
+  }
+
+  cancel() {
+    this._router.navigate(['/dashboard'])
   }
 }

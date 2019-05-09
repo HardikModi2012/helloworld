@@ -1,6 +1,7 @@
 <div class="container">
     <form #eventForm="ngForm" (ngSubmit)="saveEvent(eventForm.value)">
-      <div class="form-group"  [ngClass]="{'error': eventForm.controls.txtName?.invalid && eventForm.controls.txtName?.touched}">
+      <div class="form-group"  [ngClass]="{'error': eventForm.controls.txtName?.invalid
+       && eventForm.controls.txtName?.touched}">
         <label for="name">Event Name: </label>
         <input id="name" required (ngModel)="name" name="txtName" type="text"/>
         <span *ngIf="eventForm.controls.txtName?.invalid && eventForm.controls.txtName?.touched">Required</span>

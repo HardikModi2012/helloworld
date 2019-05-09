@@ -24,7 +24,7 @@ export class CoursesComponent implements OnInit {
 
        getCourses(): void {
         this.courseService.getCourses()
-          .subscribe(dbCourses => this.courses = dbCourses.slice(1,5));
+          .subscribe(courses => this.courses = courses);
     }
 
 
